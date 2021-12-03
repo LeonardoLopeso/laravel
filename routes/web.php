@@ -21,6 +21,18 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 Route::view('/teste', 'teste');
 
-Route::get('/noticia/{slug}', function() {
-    echo "TITULO: titulo qualquer";
+Route::get('/noticia/{slug}', function($slug) {
+    echo "Slug: " . $slug;
 });
+
+Route::get('/noticia/{slug}/comentario/{id}', function($slug, $id) {
+    echo "Mostrando o comentário ".$id." da notícia ".$slug;
+});
+
+Route::get('/user/{name}', function($name) {
+    echo "Mostrando usuário de Nome: ".$name;
+})->where('name', '[a-z]+');
+
+Route::get('/user/{id}', function($id) {
+    echo "Mostrando usuário ID: ".$id;
+})->where('id', '[0-9]+');
