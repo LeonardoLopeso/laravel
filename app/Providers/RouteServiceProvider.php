@@ -17,7 +17,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    // public const HOME = '/home';
+    // alterado para a rota config
+    public const HOME = '/config';
 
     /**
      * The controller namespace for the application.
@@ -35,8 +37,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::pattern('id', '[0-9]+');
-
         $this->configureRateLimiting();
 
         $this->routes(function () {
@@ -48,7 +48,6 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
-
         });
     }
 
