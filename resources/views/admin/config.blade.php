@@ -5,7 +5,7 @@
 @section('content')
     <h1>Configurações</h1>
 
-    <a href="/logout">Sair</a>
+    Olá, {{$nome}} - <a href="/logout">Sair</a>
 
     {{-- Meu nome é: {{ $nome }}. Eu tenho {{ $idade }} anos.<br/> --}}
 
@@ -48,7 +48,7 @@
         @endforelse
     </ul>
 
-
+    @if($showform)
     <form method="POST">
         @csrf
 
@@ -63,6 +63,7 @@
 
         <input type="submit" value="Enviar" />
     </form>
+    @endif
 
     <a href="/config/info">Informações</a>
 @endsection

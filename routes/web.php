@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TarefasController;
-use App\Http\Controllers\Admin\ConfigController;
+use App\Http\Controllers\Admin;
 use App\Http\Controllers\Auth;
 use App\Http\Controllers\TodoController;
 
@@ -67,14 +67,14 @@ Route::prefix('/tarefas')->group(function() {
 Route::prefix('/config')->group(function() {
 
     // Route::get('/', 'Admin\ConfigController@index');
-    Route::get('/', [ConfigController::class, 'index'])->name('config.index')->middleware('auth');
+    Route::get('/', [Admin\ConfigController::class, 'index'])->name('config.index');
     // Route::post('/', 'Admin\ConfigController@index');
-    Route::post('/', [ConfigController::class, 'index']);
+    Route::post('/', [Admin\ConfigController::class, 'index']);
 
     // Route::get('info', 'Admin\ConfigController@info');
-    Route::get('info', [ConfigController::class, 'info']);
+    Route::get('info', [Admin\ConfigController::class, 'info']);
     // Route::get('permissoes', 'Admin\ConfigController@permissoes');
-    Route::get('permissoes', [ConfigController::class, 'permissoes']);
+    Route::get('permissoes', [Admin\ConfigController::class, 'permissoes']);
 });
 
 Route::fallback(function() {
