@@ -37,7 +37,12 @@ class ApiController extends Controller
     public function readAllTodos() {
         $array = ['error' => ''];
 
-        $array['list'] = Todo::all();
+        // $array['list'] = Todo::all();
+        // $todo = Todo::where('done', 1)->simplePaginate(2); // Páginação com condições
+        $todo = Todo::simplePaginate(2);
+        
+        $array['list'] = $todo->items();
+        $array['current_page'] = $todo->currentPage();
 
         return $array;
     }
@@ -90,7 +95,7 @@ class ApiController extends Controller
 
         }else{
             $array['error'] = 'Tarefa'.$id.' não existe, logo, não pode ser atualizado';
-;        }
+        }
 
         return $array;
     }
