@@ -40,7 +40,7 @@ class ApiController extends Controller
         // $array['list'] = Todo::all();
         // $todo = Todo::where('done', 1)->simplePaginate(2); // Páginação com condições
         $todo = Todo::simplePaginate(2);
-        
+
         $array['list'] = $todo->items();
         $array['current_page'] = $todo->currentPage();
 
