@@ -73,4 +73,28 @@ class AuthController extends Controller
 
         return $array;
     }
+
+    public function loginjwt(Request $request) {
+        $array = ['error' => ''];
+
+        $creds = $request->only('email', 'password');
+
+        $token = Auth::attempt($creds);
+
+        if($token) {
+            $array['token'] = $token;
+        }else{
+            $array['error'] = 'E-mail e/ou senha incorreto';
+        }
+
+        return $array;
+    }
+
+    public function logoutjwt(Request $request) {
+        $array = ['error' => ''];
+
+        Auth::logout();
+
+        return $array;
+    }
 }

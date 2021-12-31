@@ -14,10 +14,11 @@ Route::get('/ping', function() {
 });
 
 Route::get('/unauthenticated', function() {
-    return ['error' => 'Usuário não logado'];
+    return ['error' => 'Usuário não está logado'];
 })->name('login');
 
 Route::post('/user', [AuthController::class, 'create']);
+Route::middleware('auth:api')->post('/auth/loginjwt', [AuthController::class, 'loginjwt']);
 Route::middleware('auth:sanctum')->get('/auth/logout', [AuthController::class, 'logout']);
 Route::post('/auth', [AuthController::class, 'login']);
 
